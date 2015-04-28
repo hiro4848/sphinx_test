@@ -1,0 +1,392 @@
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+.thumbnail {
+  height: 200px;
+
+  img.pull-right {
+    width: 50px;
+  }
+}
+
+/* Do not remove this comments bellow. It's the markers used by gulp-inject to inject
+   all your sass files automatically */
+// injector
+// endinjector
+
+
+
+/* UI bootstrap hack */
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+/* end of UI bootstrap hack */
+
+
+body {
+/*  background-color: #f2f2f2; */
+  background-color: #FFF;
+}
+
+a, a:focus, a:hover, a:active {
+  color: #00afd7;
+}
+
+
+h1, h2, h3 {
+  font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 12px 0;
+}
+h1 {
+  font-size: 24px;
+  font-weight: 100;
+  letter-spacing: .02em;
+  line-height: 48px;
+  margin: 12px 0;
+}
+h2 {
+  color: #2a333c;
+  font-weight: 200;
+  font-size: 21px;
+}
+h3 {
+  color: rgb(84, 102, 120);
+  font-size: 21px;
+  font-weight: 500;
+  letter-spacing: -0.28px;
+  line-height: 29.39px;
+}
+
+
+
+.navbar-toggle {
+  background-color: rgba(255,255,255,.25);
+}
+.navbar-toggle .icon-bar {
+  background: #fff;
+}
+
+
+.navbar-nav {
+  margin: 5px 0 0;
+}
+
+.navbar-nav > li > a {
+  font-size: 15px;
+  font-weight: 200;
+  letter-spacing: 0.03em;
+  padding-top: 19px;
+  text-shadow: 0 0 2px rgba(0,0,0,.1);
+}
+.navbar-nav > li > a:focus,
+.navbar-nav > li > a:hover {
+  background: transparent none;
+}
+
+.navbar-nav > li > a.navbar-btn {
+  background-color: rgba(255,255,255,.25);
+  border: medium none;
+  padding: 10px 15px;
+}
+.navbar-nav > li > a.navbar-btn:focus,
+.navbar-nav > li > a.navbar-btn:hover {
+  background-color: rgba(255,255,255,.35);
+}
+.navbar-collapse {
+  box-shadow: none;
+}
+
+body.application {
+  background: #f2f2f2;
+  padding: 60px 20px 0;
+}
+body.application > .container-fluid {
+  padding-left: 0;
+  padding-right: 0;
+}
+body.application div[class^="col-"] {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+body.application div[class^="col-"] div[class^="col-"] {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+body.application hr {
+  border-color: #d7d7d7;
+  margin: 10px 0;
+}
+
+
+.navbar-inverse {
+  background-color: #3d4a57;
+  border-color: #333;
+}
+.navbar-inverse .navbar-nav > li > a,
+.navbar .navbar-brand {
+  color: #fbfbfb;
+  text-decoration: none;
+}
+
+.navbar-nav > li > a:hover {
+  background-color: #FDFDFD !important;
+  color: #111 !important;
+}
+
+
+.navbar-nav > li > a {padding-top:10px !important; padding-bottom:10px !important;}
+.navbar {
+  min-height:30px !important;
+  margin-bottom: 5px !important;
+}
+
+
+.page-header {
+  margin: 5px 0;
+}
+
+
+.tabbed-panel {
+  border-top: 0px;
+  border-top-right-radius: 0 0;
+  border-top-left-radius: 0 0;
+}
+
+.tabbed-panel-tab {
+}
+
+
+.table-process-data > tbody > tr {
+    border-top: 1px solid rgb(221, 221, 221);
+}
+
+.table-process-data > tbody > tr:first-child {
+    border-top: 0;
+}
+
+
+.table-process-data > tbody > tr > td {
+    border-top: 0;
+}
+
+ 
+.navbar-default {
+  color: #fbfbfb;    
+  background-color: rgb(61, 74, 87);
+}
+
+.navbar-default .navbar-brand {
+
+  color: #fbfbfb;    
+  background-color: rgb(61, 74, 87);
+}
+
+.navbar-default .navbar-nav>li>a {
+  color: #fbfbfb;    
+  background-color: rgb(61, 74, 87);
+
+  }
+
+
+.search-box {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    height: 250px;
+}
+
+.indentation {
+  padding-left: 40px;
+}
+
+.filter-subitem {
+  margin: 20px;
+}
+
+
+  .node {
+    cursor: pointer;
+  }
+
+  .overlay{
+/*      background-color:#EEE; */
+  }
+   
+  .node circle {
+    fill: #fff;
+    stroke: steelblue;
+    stroke-width: 1.5px;
+  }
+   
+  .node text {
+    font-size:10px; 
+    font-family:sans-serif;
+  }
+   
+  .link {
+    fill: none;
+    stroke: #ccc;
+    stroke-width: 1.5px;
+  }
+
+  .templink {
+    fill: none;
+    stroke: red;
+    stroke-width: 3px;
+  }
+
+  .ghostCircle.show{
+      display:block;
+  }
+
+  .ghostCircle, .activeDrag .ghostCircle{
+       display: none;
+  }
+
+
+  /* time picker */
+.timepicker-container {
+  width: 800px;
+  margin: 15px;
+}  
+.timepicker-section {
+      float: left;
+      padding: 0px 15px;
+    }  
+.time-range-text {
+  padding: 10px 20px;
+  font-size: 1.2em;
+}
+
+
+/* process list */
+.process-list-item {
+  border-bottom: 1px solid;
+  border-bottom-color: rgb(221, 221, 221);
+}
+
+a.list-group-item {
+    height:auto;
+/*    min-height:220px; */
+}
+a.list-group-item.active small {
+    color:#fff;
+}
+.stars {
+    margin:20px auto 1px;    
+}
+
+
+/* process explorer sub candidates */
+.query-hint-box {
+  margin-right: 0;
+  margin-left: 0;
+  border-color: #ddd;
+  border-radius: 4px 4px 0 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  cursor: pointer;  
+}
+
+.query-hint-box-row {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 8px 0;
+  line-height: 1.42857143;
+  border-bottom: 1px solid;
+  border-bottom-color: rgb(221, 221, 221);  
+  cursor: pointer;
+}
+
+
+.process-row {
+  height: 60px;
+  padding: 8px 0px;
+}
+
+.process-row .name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+}
+
+.flot-chart {
+  height: 200px;
+  cursor: crosshair;
+}
+
+
+.process-detail-row {
+  padding: 8px 0;
+  height: 30px;
+  border-bottom: 1px solid;
+  border-bottom-color: rgb(221, 221, 221);  
+}
+
+.process-detail-column-value {
+  word-wrap: break-word;
+}
+
+.process-list-column {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;  
+}
+
+.process-event-filter {
+  padding: 10px;
+  width: 200px;
+}
+
+
+.process-explorer-panel {
+  height: 535px;
+}
+
+
+.config-one-item{
+  text-align:center;
+  margin-bottom:20px;
+  margin-top:20px;
+
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  animation-duration: 1s;
+    animation-delay:0s;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-delay: 0s;
+    -moz-animation-duration: 1s;
+    -moz-animation-delay:0s;
+    -ms-animation-duration: 1s;
+    -ms-animation-delay: 0s;
+    -o-animation-duration: 1s;    
+    -o-animation-delay: 0s;
+}
+
+ .config-one-item i{
+  font-size:45px;
+}
+
+  .config-one-item h2{
+  font-size:50px;
+  font-weight:normal;
+  margin-bottom:20px;
+  line-height:60px;
+}
+ 
+  .config-one-item  h4{
+  display:inline;
+  font-family: 'Open Sans', sans-serif;
+  font-size:20px;
+  font-weight:normal;
+  padding:5px 10px 5px 10px;
+  border-radius:5px;
+}
+
+
+.dashboard-search {
+  margin: 60px 0;
+}

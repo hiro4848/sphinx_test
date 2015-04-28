@@ -1,0 +1,119 @@
+<!-- simple search text -->
+<div class="row">
+
+  <div class="col-lg-8">
+
+    <form ng-submit='search()'>
+      <div class="input-group input-group-lg">
+        <input type="text" class="form-control" placeholder="Search anything" aria-describedby="sizing-addon1" ng-model="criteria_simple_text">
+        <span class="input-group-btn" ng-click"search()">
+          <button class="btn btn-default" type="button">Go!</button>
+        </span>
+      </div><!-- /input-group -->
+    </form>
+  </div> <!-- end of col-lg-8 -->
+
+  <div class="col-lg-4">
+
+
+
+    <div class="input-group input-group-lg pull-right">
+
+
+      <span class="time-range-text">{{ time_range_text }} </span>
+
+
+
+      <div class="btn-group" dropdown  is-open="timepicker_dropdown_status">
+        <button class="btn btn-default btn-lg dropdown-toggle" ng-disabled="disabled" ng-click="toggleDropdown($event)" >
+          <span class="glyphicon glyphicon glyphicon-time" style="vertical-align:middle"></span>
+        </button>
+
+        <div class="dropdown-menu" ng-click="$event.stopPropagation()" role="menu">
+
+          <!-- time picker controller -->
+          <div ng-controller="TimePickerCtrl" class="timepicker-container">
+
+            <tabset>
+              <tab>
+                <tab-heading>
+                  <a href=''>
+                    Quick
+                  </a>
+                </tab-heading>                          
+
+                <div bindonce ng-repeat="list in quickLists" class="timepicker-section">
+                  <ul class="list-unstyled">
+                    <li  ng-repeat="option in list">
+                      <a ng-click="quick_list_item_clicked(option.from, option.to, option.display)" bo-text="option.display" style="cursor: hand;cursor: pointer;"></a>
+                    </li>
+                  </ul>
+                </div>
+
+
+              </tab>
+
+              <tab>
+                <tab-heading>
+                  <a href=''>Specific</a>
+                </tab-heading>                          
+
+                <div class="row">
+                  <div class="col-lg-4">
+                    <h4>From: </h4>
+
+                    <div>
+                      <p class="input-group">
+                        <input type="text" class="form-control" datepicker-popup="{{date_picker_format}}" ng-model="date_picker_from" is-open="date_picker_opened_from.opened"   datepicker-options="date_picker_options"  ng-required="true" close-text="Close" ng-change="date_picker_from_clicked(date_picker_from)" />
+                        <span class="input-group-btn">
+                          <button type="button" class="btn btn-default" ng-click="date_picker_open_from($event)"><i class="glyphicon glyphicon-calendar"></i>
+                          </button>
+                        </span>
+                      </p>
+
+
+                    </div>
+
+                  </div><!-- end of col-lg-4 -->
+
+                  <div class="col-lg-4">
+                    <h4>To: </h4>
+
+                    <div>
+                      <p class="input-group">
+                        <input type="text" class="form-control" datepicker-popup="{{date_picker_format}}" ng-model="date_picker_to" is-open="date_picker_opened_to.opened"   datepicker-options="date_picker_options"  ng-required="true" close-text="Close" ng-change="date_picker_to_clicked(date_picker_to)" />
+                        <span class="input-group-btn">
+                          <button type="button" class="btn btn-default" ng-click="date_picker_open_to($event)"><i class="glyphicon glyphicon-calendar"></i>
+                          </button>
+                        </span>
+                      </p>
+
+                    </div>                            
+                  </div><!-- end of col-lg-4 -->
+
+
+                  <div class="col-lg-4">
+                    <h4>&nbsp;</h4>
+
+                    <div>
+                      <button type="button" class="btn btn-default" ng-click="date_picker_apply_clicked()">Apply</i>
+                      </button>
+                    </div>                            
+                  </div><!-- end of col-lg-4 -->
+                </div><!-- end of row -->
+              </tab>
+            </tabset>
+          </div>
+        </div> <!-- end of TImePickerController -->
+      </div><!-- end of dropmenu -->
+
+
+
+    </div>
+
+
+  </div> <!-- end of col-lg-4 -->
+
+
+</div> <!-- end of row -->
+

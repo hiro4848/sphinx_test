@@ -1,0 +1,63 @@
+  <nav class="navbar navbar-default navbar-static-top" role="navigation" >
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">Sphinx</a>
+      </div>
+      <!-- /.navbar-header -->
+
+      <ul class="nav navbar-top-links navbar-right">
+
+        <li dropdown is-open="status.isopen">
+          <a href="" class="dropdown-toggle" dropdown-toggle ng-disabled="disabled">
+            {{ user.email }}
+           <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a ng-click="signOutBtnClicked()">Logout</a></li>
+          </ul>
+        </li>
+
+      </ul>
+      <!-- /.navbar-top-links -->
+
+
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-left">
+
+          <li dropdown is-open="searchStatus.isopen">
+            <a class="dropdown-toggle" dropdown-toggle ng-disabled="disabled">
+              Search
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a ui-sref="search.new({type: 'process'})">Process Search</a></li>
+              <li class="divider"></li>
+              <li><a ui-sref="search.new({type: 'event'})">Event Search</a></li>              
+            </ul>
+          </li>
+
+
+
+<!--          <li><a href="/hosts">Hosts</a></li> -->
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="">
+              Alerts&nbsp;&nbsp;<i class="fa fa-caret-down"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-user">
+              <li>
+                <a href="/sb_admin/alert"><i class="fa fa-gear fa-fw"></i>View Alerts</a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a href="/sb_admin/alert_setup"><i class="fa fa-user fa-fw"></i>Configure</a>
+              </li>
+
+            </ul>
+            <!-- /.dropdown-user -->
+          </li>
+          <li><a href="/reference_hashes">Reference Hash</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </nav>

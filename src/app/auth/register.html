@@ -1,0 +1,44 @@
+
+<br><br><br><br><br>
+
+<div ng-controller="AuthCtrl">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+        <div class="login-panel panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Sign Up</h3>
+          </div>
+          <div class="panel-body">
+            <form ng-submit="handleRegBtnClick()" role="form" ng-init="registrationForm = {}">
+              <fieldset>
+                <div class="form-group">
+                  <input class="form-control" ng-model="registrationForm.email" required="required" placeholder="E-mail" name="email" type="email" autofocus>
+                </div>
+                <div class="form-group">
+                  <input class="form-control" ng-model="registrationForm.password" required="required" placeholder="Password" name="password" type="password" value="">
+                </div>
+                <div class="form-group">
+                  <input class="form-control" ng-model="registrationForm.password_confirmation" required="required" placeholder="Type password again" name="password" type="password" value="">
+                </div>
+
+                <button type="submit" class="btn btn-lg btn-success btn-block">Register</button>
+                <!-- Change this to a button or input when using this as a form -->
+              </fieldset>
+              <hr>
+              <strong>
+              <a ui-sref="login">Already Have an Account</a>
+              <br />
+              </strong>
+              <br>
+              <strong>
+              <a ui-sref="password_reset">Forgot your password?</a>
+              <br />
+              </strong>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

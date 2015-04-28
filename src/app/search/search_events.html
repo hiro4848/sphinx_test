@@ -1,0 +1,130 @@
+<div ng-controller="AdvSearchCtrl">
+  <div class="container-fluid">
+    <span us-spinner="{radius:30, width:8, length: 16}"></span>
+    &nbsp;
+    <!-- search text and datetime partial -->
+    <div ng-include='app/components/searchtext_and_datetime'></div>
+
+    <hr>
+    <!-- criteria builder -->
+    <%= render 'event_search_criteria_builder' %>
+    <hr>
+    <!-- bar chart -->
+    <div class="row">
+      <div class="col-lg-12">
+        <div ng-controller="FlotCtrl">
+          <flot id="flot-chart" dataset="dataset" min="min" options="options" selectioncallback="selectioncallback" height="180px" class="flot-chart"></flot>
+          <div id="legend" style="width: 100%; height: 100%;"></div>
+        </div>
+      </div>
+      <!-- end of col-lg-12 -->
+    </div>
+    <!-- end of row -->
+    <!-- end of bar chart -->
+    
+    <hr>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="pull-right">
+          <div class="btn-group" dropdown is-open="status.isopen">
+            <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle ng-disabled="disabled">
+            Columns <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              <li ng-repeat="column in columns">
+                <input type="checkbox" ng-model="column.visible"> {{column.title}}
+              </li>
+            </ul>
+          </div>
+        </div>
+        <table class="table table-hover">
+          <thead>
+            <td ng-repeat="column in event_columns" ng-show="column.visible" sortable="column.field">
+              <strong>{{ column.title }}</strong>
+            </td>
+            <td>
+              <strong>Actions</strong>
+            </td>
+          </thead>
+          <tbody>
+            <tr ng-repeat-start="event in events" ng-click="event.show_detail = !event.show_detail">
+              <td ng-repeat="column in event_columns" ng-show="column.visible" sortable="column.field"ng-mouseover="simple_criteria_item_hover_in()" ng-mouseleave="simple_criteria_item_hover_out()" class="{{column.cls}}">
+
+
+
+                <span ng-if="(column.field == 'FileName') || (column.field == 'reputation') || (column.field == 'Hostname') || (column.field == 'ProcessName')" >
+                  <span class="pull-right" ng-show="hover_flag" ng-if="event[column.field] != null">
+                    <a href="" class="btn btn-default btn-sm" ng-click="
+                      simple_criteria_button_clicked(column.key, event[column.field], column.criteria_type, false, $event)">
+                      <span class="glyphicon glyphicon-plus" ></span>
+                    </a>
+                    <a href="" class="btn btn-default btn-sm" ng-click="simple_criteria_button_clicked(column.key, event[column.field], column.criteria_type, true, $event)" ><span class="glyphicon glyphicon-minus" ></span></a>
+                  </span>
+                  {{ column.field == 'reputation' ? reputation_str(event[column.field]) : event[column.field] }}
+                </span>
+                <span ng-if="column.field == 'EventType'" >
+
+                  <span class="pull-right" ng-show="hover_flag" >
+                    <a href="">
+                      <span class="glyphicon glyphicon-plus-sign" ng-click="simple_criteria_button_clicked(column.key, event.event_type, column.criteria_type, false, $event)">
+                      </span>
+                    </a>
+                    <a href="">
+                      <span class="glyphicon glyphicon-minus-sign" ng-click="simple_criteria_button_clicked(column.key, event.event_type, column.criteria_type, true, $event)" >
+                      </span>
+                    </a>
+                  </span>
+                  {{ event.event_type.label }}
+                </span>
+                <span ng-if="column.field == 'EventTime'" >
+                  {{ event[column.field] | date:'yyyy-MM-dd HH:mm:ss' }}
+                </span>
+              </td>
+              <td>
+                
+                <a class="btn btn-default btn-sm" ng-click="$event.stopPropagation()"  ng-show="(event.lh_type == 'process creation') || (event.lh_type == 'module_load') " href="/sb_admin/process_detail?hostname={{event.Hostname}}&guid={{ event.ProcessGuid | encodeUri }}" target="_blank">
+                  <span class="glyphicon glyphicon-cog" ></span>
+                  Analyze
+                </a>
+                <a class="btn btn-default btn-sm" ng-click="$event.stopPropagation()"  ng-show="(event.lh_type == 'process creation') || (event.lh_type == 'module load') || (event.lh_type == 'driver load')" href="{{vt_link(event.Hash)}} " target="_blank">
+                  <span class="glyphicon glyphicon-cog" ></span>
+                  VirusTotal
+                </a>
+              </td>
+            </tr>
+            <tr ng-repeat-end ng-show="event.show_detail" >
+              <td colspan="20">
+                <div>
+                  <table class="table table-hover">
+                    <tbody>
+                      <tr ng-repeat="(key, value) in event">
+                        <td>
+                          {{key}}
+                        </td>
+                        <td>
+                          {{value}}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-3">
+      </div>
+      <div class="col-lg-6">
+        <pager total-items="totalItems" items-per-page="itemsPerPage" ng-model="currentPage" ng-change="pageChanged()"></pager>
+      </div>
+      <div class="col-lg-3">
+      </div>
+    </div>
+    <!-- end of row -->
+  </div>
+  <!-- end of container-fluid -->
+</div>
+<!-- end of ng-controller AdvSearchCtrl -->

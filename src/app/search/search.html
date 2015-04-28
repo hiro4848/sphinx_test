@@ -1,0 +1,112 @@
+
+
+
+
+<div ng-controller="TabbedSearchCtrl" ng-cloak>
+
+
+
+  <tabset>
+
+    <tab heading="+ new search" class="tabbed-panel-tab" ng-click="newSearchTabClicked()">
+
+
+
+    </tab>
+
+
+    <tab ng-repeat="saved_search in saved_searches" active="saved_search.is_active" class="tabbed-panel-tab" ng-click="tabClicked(saved_search)">
+
+
+      <tab-heading>
+
+      {{saved_search.name}} 
+
+      <span class="dropdown">
+        <a href="" class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenu1">
+          <li>
+            <a ng-click="remove_tab($index)" href=''>
+              <span class="glyphicon glyphicon glyphicon-time" ></span>
+                Remove this
+            </a>
+          </li>
+
+          <li class="divider"></li>
+          <li>
+                <form class="form-inline" ng-submit="rename_tab(saved_search)">
+                  <div class="form-group">
+                    <label>Rename: </label>
+                    <input type="text" class="form-control" placeholder="" ng-model="saved_search.name" ng-click="stop_propagation($event)" >
+                  </div>
+                </form>
+          </li>
+
+        </ul>
+      </span>
+
+
+      </tab-heading>
+
+
+
+      <div ng-if="saved_search.search_type == SEARCH_TYPE_UNDEFINED">
+
+
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+              <div class="login-panel panel panel-default">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Choose your search type</h3>
+                </div>
+                <div class="panel-body">
+
+                  <a class="btn btn-lg btn-success btn-block" ng-click="start_process_search(saved_search)">
+                    Executed Programs (Recommended)
+                  </a>
+                  <br>
+                  <a class="btn btn-lg btn-success btn-block" ng-click="start_event_search(saved_search)">
+                    Events (More low level)
+                  </a>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div ng-if="saved_search.search_type == SEARCH_TYPE_EVENTS">
+
+        <div ng-include="'app/search/search_events.html'"></div>
+
+      </div>
+
+
+      <div ng-if="saved_search.search_type == SEARCH_TYPE_PROCESSES">
+
+
+        <div ng-include="'app/search/search_processes.html'"></div>
+
+      </div>
+
+
+
+
+
+    </tab>
+
+
+
+  </tabset>
+
+</div><!-- end of ng-controller TabbedSearchCtrl -->
+
+
+
+

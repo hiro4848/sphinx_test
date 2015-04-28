@@ -1,0 +1,8 @@
+{
+  "development": { 
+    "api_endpoint": "http://localhost:3000/api/v2/" 
+  },
+  "production": { 
+    "api_endpoint": "http://localhost:3000/api/v2/"     
+  }
+}
